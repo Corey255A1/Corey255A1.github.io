@@ -1,5 +1,6 @@
 body {
     background: black;
+    background-color: black;
 }
 h2 {
     color: white;
@@ -7,15 +8,20 @@ h2 {
 h1 {
     font-size: 50px;
 }
+h3 {
+    color: white;
+}
+
 a:link, a:visited {
-    color: blue;
+    color: rgb(0, 102, 255);
     text-decoration: none;
 }
 a:hover, a:active {
-    color: green;
+    color: rgb(66, 180, 0);
 }
 .Standard {
     font-family: Sans-Serif;
+    font-weight: 100;
 }
 .Wunder {
     color: yellow;
