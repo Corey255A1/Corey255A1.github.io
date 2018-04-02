@@ -4,6 +4,7 @@ const drawCtx = canvas.getContext("2d");
 const ctxW = canvas.width-24;
 const ctxH = canvas.height-24;
 
+const Speed = 2;
 
 var uPX = 0;
 var uPY = 0;
@@ -89,6 +90,16 @@ function DrawDynamic(ctx)
     ctx.stroke();
 }
 
+function FindLine(x,y)
+{
+    //Find the line that this x and y hits
+    for(var l in TheLines)
+    {
+        var line = TheLines[l];
+
+    }
+}
+
 var robby = {
     X:16,
     Y:16,
@@ -107,22 +118,45 @@ var robby = {
         //console.log(x + ' ' + y)
         var px0 = ctx.getImageData(this.X, this.Y+y,1,1).data;
         var px1 = ctx.getImageData(this.X+x, this.Y,1,1).data;
-        var px2 = ctx.getImageData(this.X+x, this.Y+y,1,1).dat;
+        var px2 = ctx.getImageData(this.X+x, this.Y+y,1,1).data;
         
         var sense = {
             TB:false,
             LR:false,
-            ANG:false
+            ANG:false,
+            HitLine:false
         }
-        if(y!=0 && px0[1]==128 && px0[2]==255)
+
+        if(y!=0)
         {
-            sense.TB = true;
+            if(this.Y+y>ctxH||this.Y+y<24)
+            {
+                //hit the boundary
+                sense.TB = true;
+            }
+            else if(px0[1]==128 && px0[2]==255)
+            {
+                sense.TB = true;
+                sense.HitLine = true;
+            }
         }
-        if(x!=0 && px1[1]==128 && px1[2]==255)
+
+        if(x!=0)
         {
-            sense.LR = true;
+            if(this.X+x>ctxW||this.X+x<24)
+            {
+                //hit the boundary
+                sense.LR = true;
+            }
+            else if(px1[1]==128 && px1[2]==255)
+            {
+                sense.LR = true;
+                sense.HitLine = true;
+            }
         }
-        if(x!=0 && y!=0 && px1[1]==128 && px1[2]==255)
+
+
+        if(x!=0 && y!=0 && px2[1]==128 && px2[2]==255)
         {
             sense.ANG = true;
         }
@@ -133,23 +167,24 @@ var robby = {
         //Bouncing
         var VSense = this.sense(ctx,20*Math.sign(this.Vx),20*Math.sign(this.Vy));
 
-        
-        if(this.Vx>0 && (this.X>ctxW || VSense.LR))
+        if(VSense.ANG && !VSense.LR && !VSense.TB)
         {
-            this.Vx = -2;
+            //console.log("LOG")
+            this.Vx = this.Vx * -1;
+            this.Vy = this.Vy * -1;
         }
-        else if(this.Vx<0 && (this.X<24  || VSense.LR))
+        else 
         {
-            this.Vx = 2;
-        }
-        
-        if(this.Vy>0 && (this.Y>ctxH  || VSense.TB))
-        {
-            this.Vy = -2;
-        }
-        else if(this.Vy<0 && (this.Y<24  || VSense.TB))
-        {
-            this.Vy = 2;
+            if(VSense.LR)
+            {
+                this.Vx = this.Vx * -1;
+                //console.log(this.Vx) 
+            }
+            if(VSense.TB)
+            {
+                this.Vy = this.Vy * -1;
+                //console.log(this.Vy) 
+            }
         }
 
         
