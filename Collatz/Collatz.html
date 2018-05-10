@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>WunderVision Collatz Conjecture</title>
+    <link href="../bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../mystyles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+                <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
+                <h4>Find the Collatz Conjecture Path of a given number!</h4>
+                <span class="Normal">
+                <br>The Algorithm is:
+                <br>X is any positive integer
+                <br>If X is Even then X=X/2
+                <br>If X is Odd then X=3X+1 (Below, X=(3X+1)/2 is used as a short cut)
+                <br>The Conjecture is that this algorithm always reaches 1
+                <br>So far this has been the case.
+                </span>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input name="colInput" id="colInput" type="number">
+                <input type="button" onclick="findCollatz()" value="Find">
+                <span class="Normal"><div id="outputSpace"><b>RESULT:</b></div></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="../index.html">Back</a>
+            </div>
+        </div>
+    </div>
+    <script>
+    
+    function findCollatz()
+    {
+        var numberIn = document.getElementById("colInput").value;
+        var str = "<b>RESULT:</b> " + numberIn;
+        while((numberIn=getNextNumber(numberIn))!=1)
+        {
+            str = str + " ⇒ " + numberIn;
+        }
+        str = str + " ⇒ 1"
+        
+        document.getElementById("outputSpace").innerHTML = str;
+    }
+    function getNextNumber(num)
+    {
+        if(num & 1)
+        {
+            return (3*num + 1)/2;
+        }
+        else
+        {
+            return (num/2);
+        }
+    }
+        
+    </script>
+</body>
+</html>
