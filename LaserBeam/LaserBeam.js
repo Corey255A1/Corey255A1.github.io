@@ -1,5 +1,5 @@
 const canvas = document.getElementById("viz");
-const fireBtn = document.getElementById("fireBtn")
+
 
 const drawCtx = canvas.getContext("2d");
 drawCtx.font = "16px Arial";
@@ -11,10 +11,71 @@ const centerY = ctxH/2;
 const sticklength = 50;
 
 var bMoveLine = false;
+var rows=4;
+var cols=4;
+
+var cannonGridX = 2;
+var cannonGridY = 2;
+var cannonX = cannonGridX*(ctxW/cols);
+var cannonY = cannonGridY*(ctxH/rows);
 var uPLX = centerX + 10;
 var uPLY = centerY + 10;
 
+
 var bulletList = [];
+
+document.getElementById("fireBtn").onclick = function(e)
+{
+    var u = GetUnitVector(uPLX-cannonX,uPLY-cannonY);
+    for(var i=0;i<20;i++)
+    {
+        bulletList.push(new Bullet(cannonX,cannonY,u[0]*5,u[1]*5,i));
+    }
+}
+document.getElementById("addRowBtn").onclick = function(e)
+{
+    rows = rows+1;
+    cannonY = cannonGridY*(ctxH/rows);
+}
+document.getElementById("remRowBtn").onclick = function(e)
+{
+    rows = rows-1;
+    cannonY = cannonGridY*(ctxH/rows);
+}
+document.getElementById("addColBtn").onclick = function(e)
+{
+    cols = cols+1;
+    cannonX = cannonGridX*(ctxW/cols);
+}
+document.getElementById("remColBtn").onclick = function(e)
+{
+    cols = cols-1;
+    cannonX = cannonGridX*(ctxW/cols);
+}
+
+
+
+document.getElementById("incYBtn").onclick = function(e)
+{
+    cannonGridY = cannonGridY+1;
+    cannonY = cannonGridY*(ctxH/rows);
+}
+document.getElementById("decYBtn").onclick = function(e)
+{
+    cannonGridY = cannonGridY-1;
+    cannonY = cannonGridY*(ctxH/rows);
+}
+document.getElementById("incXBtn").onclick = function(e)
+{
+    cannonGridX = cannonGridX+1;
+    cannonX = cannonGridX*(ctxW/cols);
+}
+document.getElementById("decXBtn").onclick = function(e)
+{
+    cannonGridX = cannonGridX-1;
+    cannonX = cannonGridX*(ctxW/cols);
+}
+
 
 canvas.onmousedown = function(e)
 {
@@ -32,14 +93,6 @@ canvas.onmousemove = function(e)
     {
         uPLX = e.offsetX;
         uPLY = e.offsetY;
-    }
-}
-fireBtn.onclick = function(e)
-{
-    var u = GetUnitVector(uPLX-centerX,uPLY-centerY);
-    for(var i=0;i<20;i++)
-    {
-        bulletList.push(new Bullet(centerX,centerY,u[0]*5,u[1]*5,i));
     }
 }
 
@@ -118,9 +171,9 @@ function DrawDynamic(ctx)
     ctx.lineWidth = 6;
     ctx.strokeStyle = 'rgb(0,0,255)';
     ctx.beginPath();
-    var u = GetUnitVector(uPLX-centerX,uPLY-centerY);
-    ctx.moveTo(centerX, centerY);
-    ctx.lineTo(centerX+u[0]*sticklength, centerY+u[1]*sticklength);
+    var u = GetUnitVector(uPLX-cannonX,uPLY-cannonY);
+    ctx.moveTo(cannonX, cannonY);
+    ctx.lineTo(cannonX+u[0]*sticklength, cannonY+u[1]*sticklength);
     ctx.stroke();
 
     for(b in bulletList)
@@ -140,17 +193,35 @@ function DrawDynamic(ctx)
 
 function DrawStatic(ctx)
 {
+    //draw grid
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgb(125,125,125)';
+    for(var i=0; i<ctxH; i+=ctxH/rows)
+    {
+        ctx.beginPath();
+        ctx.moveTo(0,i);
+        ctx.lineTo(ctxW,i);
+        ctx.stroke();
+    }
+    for(var i=0; i<ctxW; i+=ctxW/cols)
+    {
+        ctx.beginPath();
+        ctx.moveTo(i,0);
+        ctx.lineTo(i,ctxH);
+        ctx.stroke();
+    }
     //ctx.strokeStyle = 'rgb(0,128,255)';
     ctx.lineWidth = 6;
     ctx.strokeStyle = 'rgb(255,0,0)';
     ctx.beginPath();
-    ctx.rect(0,0,512,512);
+    ctx.rect(0,0,ctxW,ctxH);
     ctx.stroke();
+
 }
 
 function update()
 {
-    drawCtx.clearRect(0,0,512,512);
+    drawCtx.clearRect(0,0,ctxW,ctxH);
     DrawStatic(drawCtx);
     DrawDynamic(drawCtx);
 
