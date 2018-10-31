@@ -1,5 +1,9 @@
 const canvas = document.getElementById("SpinWheel");
 const drawCtx = canvas.getContext("2d");
+drawCtx.font = "26px arial"
+drawCtx.textBaseline="middle";
+drawCtx.textAlign="center";
+
 const ctxW = canvas.width;
 const ctxH = canvas.height;
 const PiOver2 = Math.PI/2;
@@ -21,7 +25,7 @@ function DrawTriangle(ctx)
     ctx.lineTo(320,0);
     
     ctx.lineWidth=3;
-    ctx.strokeStyle='rgb(0,0,0)';
+    ctx.strokeStyle='black';
     ctx.stroke();
     ctx.fill();
     
@@ -31,7 +35,6 @@ function DrawTriangle(ctx)
     ctx.lineTo(320,-20);
     ctx.lineTo(0,-20);
     ctx.lineWidth=3;
-    ctx.strokeStyle='rgb(0,0,0)';
     ctx.stroke();
 }
 
@@ -39,10 +42,22 @@ function DrawWheel(ctx)
 {
     ctx.translate(320,320);
     ctx.beginPath();
-    ctx.arc(0, 0, 320, 0, TwoPi);
+    ctx.arc(0, 0, 310, 0, TwoPi);
     ctx.fillStyle = 'teal';
     ctx.fill();
+    ctx.lineWidth=5;
+    ctx.strokeStyle='aqua'
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.arc(0, 0, 50, 0, TwoPi);
+    ctx.fillStyle = 'blue';
+    ctx.fill();
+    //ctx.lineWidth=5;
+    //ctx.strokeStyle='white'
+    //ctx.stroke();
 }
+
 const SpinStep = (TwoPi)/(60);
 var ThreshLow = (PiOver2)-SpinStep/1.5;
 var ThreshHigh = (PiOver2)+SpinStep/1.5;
@@ -51,23 +66,30 @@ function DrawNames(ctx, namelist, angleoffset)
     var ang;
     var num;
     var radius = 200;
-    ctx.font = radius*0.15 + "px arial";
-    ctx.textBaseline="middle";
-    ctx.textAlign="center";
+ 
     ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'aqua';
+    ctx.lineWidth = 3;
     var len = namelist.length;
+    var mdiv = Math.PI/len;
     var IndicatedNameIndex = -1
     for(num= 0; num < len; num++){
-        ang = num * Math.PI / (len/2) + angleoffset;
+        ang = num * (mdiv*2) + angleoffset;
         if(ang>(TwoPi)){ 
             ang = ang - (TwoPi); 
         }
         ctx.rotate(ang);
-        ctx.translate(0, -radius*0.85);
+        ctx.moveTo(0,0);
+        ctx.rotate(mdiv);
+        ctx.lineTo(0,-310);
+        ctx.stroke();
+        ctx.rotate(-mdiv);
+        
+        ctx.translate(0, -175);
         ctx.rotate(-PiOver2);
-        ctx.fillText(namelist[num], 40, 0, 200);
+        ctx.fillText(namelist[num], 30, 0, 190);
         ctx.rotate(PiOver2);
-        ctx.translate(0, radius*0.85);
+        ctx.translate(0, 175);
         ctx.rotate(-ang);
         if(ang<ThreshHigh && ang>ThreshLow)
         {
@@ -124,7 +146,7 @@ document.getElementById("spinBtn").onmousedown = function(e)
     {
         SelectedNameIndex = Players[Math.floor(Math.random()*Players.length)].Index;
         SpinTimes = Math.floor((Math.random()*3)+2);
-        
+        Spinning = true;
         SpinRateCount = 0;
         SpinRate = 1;
         document.getElementById("winner").innerText = "Who will win!?";
