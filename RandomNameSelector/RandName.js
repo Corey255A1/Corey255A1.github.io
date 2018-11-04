@@ -1,49 +1,82 @@
 const canvas = document.getElementById("SpinWheel");
-const drawCtx = canvas.getContext("2d");
-drawCtx.font = "26px arial"
-drawCtx.textBaseline="middle";
-drawCtx.textAlign="center";
+const drawCtx = canvas.getContext('2d');
+const backbuffer = document.createElement('canvas');
+backbuffer.width = canvas.width;
+backbuffer.height  = canvas.height;
+const backDrawCtx = backbuffer.getContext('2d');
+backDrawCtx.font = "26px arial"
+backDrawCtx.textBaseline="middle";
+backDrawCtx.textAlign="center";
+
+//var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 const ctxW = canvas.width;
 const ctxH = canvas.height;
 const PiOver2 = Math.PI/2;
 const TwoPi = Math.PI*2;
+const SpinStep = (TwoPi)/(90);
 function Name(name, idx)
 {
     this.Name = name;
     this.Index = idx;
 }
 
-function DrawTriangle(ctx)
+// const Beeper = new function Ticker()
+// {
+//     this.gainNode=audioCtx.createGain();
+//     this.oscillator=audioCtx.createOscillator();
+//     this.oscillator.type = 'square';
+//     this.oscillator.connect(this.gainNode);
+//     this.gainNode.connect(audioCtx.destination);
+//     this.oscillator.start();
+//     this.gainNode.gain.value = 0;
+//     this.playTone = function()
+//     {
+//         this.oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+//         this.gainNode.gain.value = 1;
+//         this.gainNode.gain.setTargetAtTime(0,audioCtx.currentTime,0.015);
+//     };
+// }();
+
+function DrawTriangle(ctx,alt)
 {
     ctx.beginPath();
-    ctx.fillStyle = 'red';
+    if(alt)
+    {
+        ctx.fillStyle = 'yellow';
+    }
+    else
+    {
+        ctx.fillStyle = 'red';
+    }
     ctx.moveTo(320,0);
     ctx.lineTo(320,20);
-    ctx.lineTo(300,0);
+    ctx.lineTo(280,0);
     ctx.lineTo(320,-20);
     ctx.lineTo(320,0);
     
-    ctx.lineWidth=3;
+    ctx.lineWidth=4;
     ctx.strokeStyle='black';
     ctx.stroke();
     ctx.fill();
     
-    ctx.moveTo(0,-20);
-    ctx.lineTo(0,20);
-    ctx.lineTo(320,20);
-    ctx.lineTo(320,-20);
-    ctx.lineTo(0,-20);
-    ctx.lineWidth=3;
-    ctx.stroke();
 }
 
 function DrawWheel(ctx)
 {
+    
+    var grd=ctx.createRadialGradient(0,0,5,0,0,320);
+    grd.addColorStop(0,"green");
+    grd.addColorStop(0.5,"blue");
+    grd.addColorStop(1,"teal");
+
+    // Fill with gradient
+    
     ctx.translate(320,320);
     ctx.beginPath();
     ctx.arc(0, 0, 310, 0, TwoPi);
-    ctx.fillStyle = 'teal';
+    //ctx.fillStyle = 'teal';
+    ctx.fillStyle=grd;
     ctx.fill();
     ctx.lineWidth=5;
     ctx.strokeStyle='aqua'
@@ -53,17 +86,13 @@ function DrawWheel(ctx)
     ctx.arc(0, 0, 50, 0, TwoPi);
     ctx.fillStyle = 'blue';
     ctx.fill();
-    //ctx.lineWidth=5;
-    //ctx.strokeStyle='white'
-    //ctx.stroke();
 }
 
-const SpinStep = (TwoPi)/(60);
-var ThreshLow = (PiOver2)-SpinStep/1.5;
-var ThreshHigh = (PiOver2)+SpinStep/1.5;
+
 function DrawNames(ctx, namelist, angleoffset)
 {
     var ang;
+    var nang;
     var num;
     var radius = 200;
  
@@ -73,11 +102,14 @@ function DrawNames(ctx, namelist, angleoffset)
     var len = namelist.length;
     var mdiv = Math.PI/len;
     var IndicatedNameIndex = -1
+    var angleList = [];
     for(num= 0; num < len; num++){
-        ang = num * (mdiv*2) + angleoffset;
+        nang = num * (mdiv*2);
+        ang = nang + angleoffset;
         if(ang>(TwoPi)){ 
             ang = ang - (TwoPi); 
         }
+        nang = TwoPi - nang;
         ctx.rotate(ang);
         ctx.moveTo(0,0);
         ctx.rotate(mdiv);
@@ -91,20 +123,54 @@ function DrawNames(ctx, namelist, angleoffset)
         ctx.rotate(PiOver2);
         ctx.translate(0, 175);
         ctx.rotate(-ang);
-        if(ang<ThreshHigh && ang>ThreshLow)
-        {
-            IndicatedNameIndex = num;
-        }
+        
+        angleList.push(nang);
     }
-    return IndicatedNameIndex;
+    ctx.stroke();
+    return angleList;
 }
 
-
+function GetCurrentNameIndex(angle, anglelist)
+{
+    for(var aidx in anglelist)
+    {
+        var a = anglelist[aidx];
+        if(a+SpinStep/2 >= angle && a-SpinStep/2 <= angle)
+        {
+            return parseInt(aidx);
+        }
+    }
+    return -1;
+}
+function GetNextIndex(idx)
+{
+    if(idx-1>=0)
+    {
+        return idx-1;
+    }
+    return NameList.length-1;
+}
+function NameIsSelected(angle,anglelist,idx)
+{
+    var a = anglelist[idx];
+    if(angle <= a+SpinStep && angle >= a-SpinStep)
+    {
+        //console.log("idx:"+idx);
+        //Beeper.playTone();
+        return true;
+    }
+    return false;
+}
+var Angle = 0;
 var NameList = [];
 var Players = [];
+var AngleList = null;
+var CurrentNameIdx = 0;
+var NextNameIdx = 1;
 document.getElementById("setBtn").onmousedown = function(e)
 {
     var nameList = document.getElementById("names").value.split("\n");
+    //audioCtx.resume();
     for(var nidx in nameList)
     {
         var n = nameList[nidx];
@@ -112,34 +178,38 @@ document.getElementById("setBtn").onmousedown = function(e)
         
         if(n.charAt(0) == '*')
         {
-            console.log("Skip");
             NameList.push(n.substring(1).trim());
         }
         else
         {
-            Players.push(new Name(n.trim(),nidx));
+            Players.push(new Name(n.trim(),NameList.length));
             NameList.push(n.trim());
         }
         
     }
     document.getElementById("names").style.display = "none";
     document.getElementById("setBtn").style.display = "none";
-    //ThreshLow = (PiOver2)*(1-1/NameList.length);
-    //ThreshHigh = (PiOver2)*(1+1/NameList.length);
-    DrawWheel(drawCtx);
-    DrawNames(drawCtx,NameList,0);
-    DrawTriangle(drawCtx);
     
+    backDrawCtx.setTransform(1, 0, 0, 1, 0, 0);
+    backDrawCtx.clearRect(0,0,640,640);
+    DrawWheel(backDrawCtx);
+    AngleList = DrawNames(backDrawCtx, NameList, PiOver2);
+    CurrentNameIdx = GetCurrentNameIndex(TwoPi, AngleList);
+    NextNameIdx = GetNextIndex(CurrentNameIdx);
+    
+    drawCtx.setTransform(1, 0, 0, 1, 0, 0);
+    drawCtx.clearRect(0,0,640,640);
+    drawCtx.drawImage(backbuffer,0,0);
+    drawCtx.translate(320,320);
+    DrawTriangle(drawCtx);
 }
 
-var Angle = 0;
-var Spinning = false;
-var CurrentIndex = ""
-var SelectedNameIndex = ""
-var SpinTimes = 0;
-var SpinRate = 1
-var SpinRateCount = 0;
 
+var Spinning = false;
+var SelectedNameIndex = 0;
+var SpinTimes = 0;
+var SpinRate = 0;
+var SpinRateCount = 0;
 document.getElementById("spinBtn").onmousedown = function(e)
 {
     if(!Spinning)
@@ -153,37 +223,44 @@ document.getElementById("spinBtn").onmousedown = function(e)
         update();
     }
 }
-
+var changed = false;
 function update()
 {
     if((SpinRateCount++)>=SpinRate)
     {
-        drawCtx.setTransform(1, 0, 0, 1, 0, 0);
-        drawCtx.clearRect(0,0,640,640);
-        DrawWheel(drawCtx);
-        var nameidx = DrawNames(drawCtx,NameList,Angle);
-        DrawTriangle(drawCtx);
-        if(nameidx!=CurrentIndex)
+        document.getElementById("winner").innerText = NameList[CurrentNameIdx];
+        if(NameIsSelected(Angle,AngleList,NextNameIdx))
         {
-            CurrentIndex = nameidx;
-            if(CurrentIndex == SelectedNameIndex)
+            CurrentNameIdx = NextNameIdx;
+            NextNameIdx = GetNextIndex(NextNameIdx);
+            changed = true;
+            if(CurrentNameIdx == SelectedNameIndex)
             {
                 SpinTimes--;
             }
         }
+        drawCtx.setTransform(1, 0, 0, 1, 0, 0);
+        drawCtx.clearRect(0,0,640,640);
+        drawCtx.translate(320,320);
+        drawCtx.rotate(Angle);
+        drawCtx.drawImage(backbuffer,-320,-320);
+        drawCtx.rotate(-Angle);
+        DrawTriangle(drawCtx,changed);
+        if(changed) changed = false;
+        
         
         Angle = Angle + SpinStep;
+        SpinRateCount = 0;
+        SpinRate*=1.003;
         if(Angle>=TwoPi) 
         {
-            SpinRate*=1.3;
             Angle = 0;
         }
-        SpinRateCount = 0;
     }
     if(SpinTimes<=0)
     {
         Spinning = false;
-        document.getElementById("winner").innerText = "Winner is " + NameList[SelectedNameIndex] + "!!";
+        document.getElementById("winner").innerText = NameList[SelectedNameIndex] + " is the WINNER!!!";
     }
     else
     {
