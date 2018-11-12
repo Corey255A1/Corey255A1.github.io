@@ -19,28 +19,49 @@ function MoveableWindow(elem)
         Elem.style.top=(e.pageY-(Title.offsetHeight/2))+"px";
         Elem.style.left=(e.pageX-(Title.offsetWidth/2))+"px";
     }
+    function onTouchMove(e){
+        e = e || window.event;
+        var t = e.touches[0]
+        Elem.style.top=(t.pageY-(Title.offsetHeight/2))+"px";
+        Elem.style.left=(t.pageX-(Title.offsetWidth/2))+"px";
+    }
     function onMouseUp(e) {
         e = e || window.event;
         e.preventDefault();
         document.onmouseup = null;
         document.onmousemove = null;
     }
-    
-    Title.onmousedown = function(e)
-    {
-      e = e || window.event;
-      e.preventDefault();
-      Elem.style.zIndex = 100;
+    function onTouchEnd(e) {
+        e = e || window.event;
+        document.removeEventListener("touchend",onTouchEnd,false);
+        document.removeEventListener("touchmove",onTouchMove,false);
+    }
+    function changeFocus() {
+       Elem.style.zIndex = 100;
       if(TopWindow!=null && TopWindow != Window)
       {
           TopWindow.LowerZ();
           TopWindow.UnFocus();
       }
       TopWindow = Window;
-      Title.classList.add("titlebar-focused");
+      Title.classList.add("titlebar-focused"); 
+    }
+    
+    Title.onmousedown = function(e) {
+      e = e || window.event;
+      e.preventDefault();
+      changeFocus();
       document.onmouseup = onMouseUp;
       document.onmousemove = onMouseMove;
     }
+    
+    Title.addEventListener("touchstart",function(e) {
+      e = e || window.event;
+      
+      changeFocus();
+      document.addEventListener("touchend",onTouchEnd,false);
+      document.addEventListener("touchmove",onTouchMove,false);
+    },false);
     
 }
 
