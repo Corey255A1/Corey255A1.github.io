@@ -1,0 +1,19 @@
+body, html {
+    height: 100%;
+}
+.bg {
+    background-image: url("Snow.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.subsection {
+    background-color: white;
+    text-align: center;
+}
+.centersection {
+    min-height: 50vh;
+    padding-top: 200px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
