@@ -78,7 +78,7 @@ function Snowflake(prototype, left)
     this.MyFlake.style.display = "inline";
     this.MyFlake.style.width = this.Size + "px";
     this.MyFlake.style.height = this.Size + "px";
-    this.MyFlake.style.opacity = Math.random();
+    this.MyFlake.style.opacity = Math.random()+.2;
     this.Update = function()
     {
         this.Top+=this.Vy;
