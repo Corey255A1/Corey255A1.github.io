@@ -1,19 +1,28 @@
 body, html {
     height: 100%;
 }
+h1 {
+    text-shadow: 2px 2px white;
+}
 .bg {
-    background-image: url("Snow.jpg");
+    background-image: url("tree.jpg");
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.subsection {
-    background-color: white;
+.subsection {    
+    background-color: rgba(255, 225, 255, 0.7);
     text-align: center;
+    margin-left: 10%;
+    top: 40%;
+    width: 80%;
+    position: fixed;
 }
-.centersection {
-    min-height: 50vh;
-    padding-top: 200px;
-    padding-left: 10%;
-    padding-right: 10%;
+.snowflake 
+{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
 }
