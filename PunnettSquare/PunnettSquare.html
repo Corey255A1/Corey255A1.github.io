@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>WunderVision: Punnet Square</title>
+        <style>
+            input[type="text"] {
+                width: 75px;
+                height: 75px;
+                font-size: 32;
+                text-align: center;
+
+            }
+            .outputcell {
+               text-align:center;
+               font-size: 32;
+               font-weight: bold;
+               color: white;
+               background: grey;
+
+            }
+        </style>
+    </head>
+    <body style="background:black">
+        <h1 style="color:white">Punnett Squares!</h1>
+        <table style="background:lightblue">
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" maxlength="1" id="p01" oninput="inputchanged()"/>
+                </td>
+                <td>
+                    <input type="text" maxlength="1" id="p02" oninput="inputchanged()"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" maxlength="1" id="p10" oninput="inputchanged()"/>
+                </td>
+                <td class="outputcell">
+                    <div id="A"></div>
+                </td>
+                <td class="outputcell">
+                    <div id="B"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" maxlength="1" id="p20" oninput="inputchanged()"/>
+                </td>
+                <td class="outputcell">
+                    <div id="C"></div>
+                </td>
+                <td class="outputcell">
+                    <div id="D"></div>
+                </td>
+            </tr>
+        </table>
+        <script src="PunnettSquare.js"></script>
+    </body>
+</html>
