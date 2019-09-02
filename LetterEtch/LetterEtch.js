@@ -4,6 +4,8 @@ const ctx = cnv.getContext("2d");
 const Width = cnv.width;
 const Height = cnv.height;
 
+const textbox = document.getElementById("words");
+
 function Letter()
 {
     const self = this;
@@ -38,17 +40,26 @@ function Letter()
     }
     
     return self;
-}
+};
+
+function distance(line){
+    var dx = line.endX - line.startX;
+    var dy = line.endY - line.startY;
+    return Math.sqrt(dx*dx + dy*dy);
+};
 
 function DrawLetter(lines){
     const self = this;
+    self.Speed = 20;
     self.Lines = lines;
     self.lineIdx = 0;
     self.lineCount = self.Lines.length;
     self.currentLine = self.Lines[self.lineIdx];
     self.currentStep = 1;
-    self.xStep = (self.currentLine.endX - self.currentLine.startX)/10;
-    self.yStep = (self.currentLine.endY - self.currentLine.startY)/10;
+    self.dstep = Math.floor(distance(self.currentLine)/self.Speed);
+    if(self.dstep<=0) self.dstep=1;
+    self.xStep = (self.currentLine.endX - self.currentLine.startX)/self.dstep;
+    self.yStep = (self.currentLine.endY - self.currentLine.startY)/self.dstep;
     self.sx = self.currentLine.startX;
     self.sy = self.currentLine.startY;
     self.ex = self.sx;
@@ -59,7 +70,7 @@ function DrawLetter(lines){
         ctx.lineTo(self.sx+self.xStep, self.sy+self.yStep);
         ctx.stroke();
         
-        if(self.currentStep<10){
+        if(self.currentStep<self.dstep){
             self.currentStep++;
             self.sx = self.sx + self.xStep;
             self.sy = self.sy + self.yStep;
@@ -69,8 +80,10 @@ function DrawLetter(lines){
             self.lineIdx++;
             if(self.lineIdx < self.lineCount){
                 self.currentLine = self.Lines[self.lineIdx];
-                self.xStep = (self.currentLine.endX - self.currentLine.startX)/10;
-                self.yStep = (self.currentLine.endY - self.currentLine.startY)/10;
+                self.dstep = Math.floor(distance(self.currentLine)/self.Speed);
+                if(self.dstep<=0) self.dstep=1;
+                self.xStep = (self.currentLine.endX - self.currentLine.startX)/self.dstep;
+                self.yStep = (self.currentLine.endY - self.currentLine.startY)/self.dstep;
                 self.currentStep = 1;
                 self.sx = self.currentLine.startX;
                 self.sy = self.currentLine.startY;
@@ -82,13 +95,9 @@ function DrawLetter(lines){
         }
         return true;
     }
-}
+};
 
-function distance(line){
-    var dx = line.endX - line.startX;
-    var dy = line.endY - line.startY;
-    return Math.sqrt(dx*dx + dy*dy);
-}
+
 
 AllLetters = {
 A: new Letter()
@@ -190,7 +199,8 @@ Q: new Letter()
     .AddLine(0,0, 1,0)
     .NextLine(1,1)
     .NextLine(0,1)
-    .NextLine(0,0),
+    .NextLine(0,0)
+    .AddLine(0.5,0.5, 1,1),
     
 R: new Letter()
     .AddLine(0,1, 0,0)
@@ -239,20 +249,19 @@ Z: new Letter()
     .NextLine(0,1)
     .NextLine(1,1)
 
-}
+};
 
-var chars = "WUNDERVISION";
+
 var letters = [];
-var xidx = 10;
-var size = 30;
-for(var a in chars){
-letters.push(new DrawLetter(AllLetters[chars[a]].GetLines(xidx,10, size, size)));
-xidx += size+5;
-}
+var xidx = 5;
+var yidx = 5;
+var size = 20;
+
 ctx.strokeStyle='rgb(0,0,255)';
 
 var currentLetter = 0;
 var letterCount = letters.length;
+
 function Update()
 {
     if(!letters[currentLetter].DrawNext(ctx))
@@ -266,6 +275,39 @@ function Update()
     else{
         window.requestAnimationFrame(Update);
     }
+};
+
+function increaseSize()
+{
+    size *= 1.1;
+}
+function decreaseSize()
+{
+    size /= 1.1;
 }
 
-Update();
+function startDrawing()
+{
+    ctx.clearRect(0,0,Width, Height);
+    var chars = textbox.value.toUpperCase();
+    letters = [];
+    xidx = 5;
+    yidx = 5;
+    for(var a in chars){
+        if(/^([A-Z])$/.test(chars[a])){
+            letters.push(new DrawLetter(AllLetters[chars[a]].GetLines(xidx,yidx, size, size)));
+        }
+        else if(chars[a] == "-"){
+            xidx = -size;
+            yidx += size+5;
+        }
+        xidx += size+5;
+        if(xidx > Width){
+            xidx = 5;
+            yidx += size+5;
+        }
+    }
+    letterCount = letters.length
+    currentLetter = 0;
+    Update();
+};
