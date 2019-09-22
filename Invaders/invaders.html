@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>WunderVision Invaders</title>
+    <link href="../bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../mystyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    Use left and right arrow keys to move and space bar to shoot
-    <br><input type="button" id="ai" value="Enable AI"/> Let the computer play the game by itself
-    <div>
-        <canvas id="gamearea" width="400" height="400"></canvas>
+    <div class="container centercontainer">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
+                <h4 class="Standard"><a href="https://www.wundervisionenvisionthefuture.com/">WunderVisionEnvisionTheFuture.com</a></h4>
+            </div>
+        </div>
+        <div class="descriptionblock">
+            Use left and right arrow keys to move and space bar to shoot
+            <br><input type="button" id="ai" value="Enable AI"/> Let the computer play the game by itself
+        </div>
+        <div>
+            <canvas style="border:1px solid white" id="gamearea" width="400" height="400"></canvas>
+        </div>
     </div>
     <script src="invaders.js"></script>
 </body>

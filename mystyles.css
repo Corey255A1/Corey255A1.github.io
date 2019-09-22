@@ -40,6 +40,16 @@ a:hover, a:active {
     color:white;
 }
 
+.centercontainer {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.descriptionblock {
+    background:white;
+    width:400px;
+    margin:auto
+}
 .icon {
     margin: 5px;
     padding: 10px;
