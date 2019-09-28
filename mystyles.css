@@ -1,52 +1,61 @@
 body {
-    background: black;
-    background-color: black;
-}
-h2 {
     color: white;
-}
-h1 {
-    font-size: 50px;
-}
-h3 {
-    color: white;
-}
-h4 {
-    color: white;
+    background-color: rgb(35,35,35);
 }
 
-.col-md-4 {
-    padding: 20px;
+.jumbotron{
+    background-color:black;
 }
 
-a:link, a:visited {
-    color: rgb(0, 102, 255);
-    text-decoration: none;
+.logo{
+    font-size: 5em;
 }
-a:hover, a:active {
-    color: rgb(66, 180, 0);
+
+@media only screen and (max-width: 768px)  {
+    .logo {
+        font-size: 3em;
+    }
+    h4 {
+        font-size: 1em;
+    }
 }
-.Standard {
-    font-family: Sans-Serif;
-    font-weight: 100;
+@media only screen and (max-width: 576px)  {
+    .logo {
+        font-size: 2em;
+    }
+    h4 {
+        font-size: 0.7em;
+    }
 }
+
 .Wunder {
     color: yellow;
 }
 .Vision {
     color: blue;
 }
-.Normal {
-    color:white;
+
+.square {
+    box-sizing: border-box;
+    border: 1px solid white;
+    height: 300px;
+    padding: 5px;
+    overflow:hidden;
 }
 
-.centercontainer {
-    margin: 10px auto;
-    text-align: center;
+.imgcontainer {
+    width:100%;
+    height:75%;
+    overflow:hidden;
 }
+
+.imgcontainer > img{
+    max-width: 300px;
+} 
 
 .descriptionblock {
     background:white;
+    color:black;
     width:400px;
     margin:auto
 }

@@ -7,12 +7,10 @@
     <link href="../mystyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="container centercontainer">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
-                <h4 class="Standard"><a href="https://www.wundervisionenvisionthefuture.com/">WunderVisionEnvisionTheFuture.com</a></h4>
-            </div>
+    <div class="container text-center">    
+        <div class="jumbotron text-center">
+            <h1 class="logo"><span class="Wunder">Wunder</span><span class="Vision">Vision</span></h1>
+            <h4><a href="https://www.wundervisionenvisionthefuture.com/">WunderVisionEnvisionTheFuture.com</a></h4>
         </div>
         
         <canvas style="background:white;" id="draw" width="640" height="480"></canvas>
@@ -20,7 +18,9 @@
             <input type="text" id="words">
             <button onclick="startDrawing()">Draw</button><button onclick="increaseSize()">INC</button><button onclick="decreaseSize()">dec</button><br>
         </div>
+        <a href="../index.html">Back</a>
     </div>
+    
     <script src="LetterEtch.js"></script>
 </body>
 </html>
