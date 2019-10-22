@@ -1,11 +1,9 @@
 const thumbsRow = document.getElementById("thumbs");
 
 const template = `
-<div class="col-md-4 square d-flex justify-content-center">
+<div class="col-md-4 square d-flex justify-content-center align-items-center">
 <a href="[LINK]">
-    <div class="imgcontainer">
-        <img src="[IMG]">
-    </div>
+    <img class="thumb" src="[IMG]">
     <h5 style="text-align:center;">[TITLE]</h5>
 </a>
 </div>`;
