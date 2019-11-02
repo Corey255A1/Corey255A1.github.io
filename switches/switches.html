@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="switches.css" type="text/css" media="all" />
+</head>
+<body>
+
+    <h1>Button States Fun!</h1>
+    <div class="button-image">
+        <button class="btn-up"></button>
+        <button class="btn-down"></button>
+        <div class="button-style"></div>
+    </div>
+    <script>
+        var button = document.querySelector(".button-image");
+        var btnstyle = button.querySelector(".button-style");
+        button.querySelector(".btn-up").addEventListener("mousedown",
+        ()=>{ btnstyle.classList.add("btn-up-style"); });
+        button.querySelector(".btn-up").addEventListener("mouseup",
+        ()=>{ btnstyle.classList.remove("btn-up-style"); });
+        button.querySelector(".btn-down").addEventListener("mousedown",
+        ()=>{ btnstyle.classList.add("btn-down-style"); });
+        button.querySelector(".btn-down").addEventListener("mouseup",
+        ()=>{ btnstyle.classList.remove("btn-down-style"); });
+        
+    </script>
+</body>
+</html>
