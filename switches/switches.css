@@ -1,11 +1,14 @@
 .button-image{
     width:100px;
     height:100px;
-    margin: auto;
+    margin: auto 10px;
     background-color: green;
     text-align: center;
     padding: 0;
     border: 2px solid black;
+    border-radius: 10%;
+    box-shadow: 0px 0px 10px black;
+    display: inline-block;
 }
 
 .button-style{
@@ -14,32 +17,54 @@
     width: 100%;
     height: 100%;
     top:-100%;
-    background-image: linear-gradient(white 0%, white 30%, red 40%, red 60%, white 70%, white 100%);
+    background-image: linear-gradient(white 0%, white 30%, red 40%, darkred 50%, red 60%, white 70%, white 100%);
     z-index: 0;
+    border-radius: 10%;
+}
+
+.btn-up{
+    padding-bottom: 20%;
+}
+.btn-down{
+    padding-top: 20%;
 }
 
 button{
     outline: none;
     position: relative;
     border: none;
-    padding: 0;
     background-color: rgba(0,0,0,0);
     width:100%;
     height:50%;
     vertical-align: top;
     z-index: 1;
+    font-weight: bold;
+    font-size:1.2rem;
 }
 
 .btn-up-style{
-    background-image: linear-gradient(red 0%, white 40%);
+    background-image: linear-gradient(red 0%, white 40%, darkred 50%, white 60%);
     box-shadow: 0px 5px 5px black;
 }
 
 .btn-down-style{
-    background-image: linear-gradient(white 60%, red 100%);
+    background-image: linear-gradient(white 40%, darkred 50%, white 60%, red 100%);
+    box-shadow: 0px -5px 5px black;
+}
+.btn-green.btn-up-style{
+    background-image: linear-gradient(green 0%, white 40%, darkgreen 50%, white 60%);
+    box-shadow: 0px 5px 5px black;
+}
+
+.btn-green.btn-down-style{
+    background-image: linear-gradient(white 40%, darkgreen 50%, white 60%, green 100%);
     box-shadow: 0px -5px 5px black;
 }
 
+.btn-green{
+ background-image: linear-gradient(white 0%, white 30%, 
+ green 40%, darkgreen 50%, green 60%, white 70%, white 100%);   
+}
 
 button:active{
     color:white;

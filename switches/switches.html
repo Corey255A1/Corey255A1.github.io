@@ -2,28 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>WunderVision Switches</title>
     <link rel="stylesheet" href="switches.css" type="text/css" media="all" />
 </head>
 <body>
 
-    <h1>Button States Fun!</h1>
+    <h1>WunderVision Button States Fun!</h1>
     <div class="button-image">
-        <button class="btn-up"></button>
-        <button class="btn-down"></button>
+        <button class="btn-up">HOT</button>
+        <button class="btn-down">PTT</button>
+        <div class="button-style"></div>
+    </div>
+    <div class="button-image">
+        <button class="btn-up">HOT</button>
+        <button class="btn-down">PTT</button>
+        <div class="button-style"></div>
+    </div>
+    <div class="button-image">
+        <button class="btn-up">HOT</button>
+        <button class="btn-down">PTT</button>
+        <div class="button-style btn-green"></div>
+    </div>
+    <div class="button-image">
+        <button class="btn-up">HOT</button>
+        <button class="btn-down">PTT</button>
         <div class="button-style"></div>
     </div>
     <script>
-        var button = document.querySelector(".button-image");
-        var btnstyle = button.querySelector(".button-style");
-        button.querySelector(".btn-up").addEventListener("mousedown",
-        ()=>{ btnstyle.classList.add("btn-up-style"); });
-        button.querySelector(".btn-up").addEventListener("mouseup",
-        ()=>{ btnstyle.classList.remove("btn-up-style"); });
-        button.querySelector(".btn-down").addEventListener("mousedown",
-        ()=>{ btnstyle.classList.add("btn-down-style"); });
-        button.querySelector(".btn-down").addEventListener("mouseup",
-        ()=>{ btnstyle.classList.remove("btn-down-style"); });
+        var buttons = document.querySelectorAll(".button-image");
+        buttons.forEach((btn)=>{
+            var btnstyle = btn.querySelector(".button-style");
+            btn.querySelector(".btn-up").addEventListener("mousedown",
+            ()=>{ btnstyle.classList.add("btn-up-style"); });
+            btn.querySelector(".btn-up").addEventListener("mouseup",
+            ()=>{ btnstyle.classList.remove("btn-up-style"); });
+            btn.querySelector(".btn-down").addEventListener("mousedown",
+            ()=>{ btnstyle.classList.add("btn-down-style"); });
+            btn.querySelector(".btn-down").addEventListener("mouseup",
+            ()=>{ btnstyle.classList.remove("btn-down-style"); });            
+        });
+
         
     </script>
 </body>
