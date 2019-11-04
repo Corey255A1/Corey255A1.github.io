@@ -32,6 +32,19 @@ body{
     border-radius: 15% 15% 0% 0%;
 }
 
+.angry .face{
+    background-color: red;
+}
+
+.angry .eye{
+    background-color: yellow;
+}
+
+.angry .mouth{
+    height:15%;
+    background-color: black;
+}
+
 .eye {
     background-color: white;
     height: 25%;
@@ -55,7 +68,6 @@ body{
 
 .mouth {
     width:75%;
-    background-color: inherit;
     border-bottom-color: black;
     border-bottom-width: 2px;
     border-bottom-style: solid;

@@ -2,6 +2,11 @@
 var eyes = [];
 const HALF_PI = Math.PI/2;
 
+document.querySelectorAll(".dude").forEach((dude)=>{
+   dude.addEventListener("mouseup",()=>{dude.classList.remove("angry");});
+   dude.addEventListener("mousedown",()=>{dude.classList.add("angry");}); 
+});
+
 document.querySelectorAll(".eye").forEach((eye)=>{
     var pos = eye.getBoundingClientRect();
     eyes.push({
