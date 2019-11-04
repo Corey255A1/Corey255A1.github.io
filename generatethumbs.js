@@ -30,6 +30,7 @@ projectList = [
     {"[LINK]":"SoundVisualizer/Visualizer.html", "[IMG]":"SoundVisualizer/WaveForm.JPG", "[TITLE]":"Sound Visualizer"},
     {"[LINK]":"Bounce/Bouncer.html", "[IMG]":"Bounce/BounceBox.png", "[TITLE]":"A Bouncing Box"},
     {"[LINK]":"SoundBox/SoundBox.html", "[IMG]":"SoundBox/SoundBox.png", "[TITLE]":"Two Musical Boxes"}
+    {"[LINK]":"GoogleEyes/GoogleEyes.html", "[IMG]":"GoogleEyes/GoogleEyes.png", "[TITLE]":"Two Musical Boxes"}
 ];
 
 var allItemsHTML = "";
