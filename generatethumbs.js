@@ -9,6 +9,7 @@ const template = `
 </div>`;
 
 projectList = [
+    {"[LINK]":"GoogleEyes/GoogleEyes.html", "[IMG]":"GoogleEyes/GoogleEyes.png", "[TITLE]":"Googly Eyes"},
     {"[LINK]":"LetterEtch/LetterEtch.html", "[IMG]":"LetterEtch/LetterEtch.gif", "[TITLE]": "Letter Etching"},
     {"[LINK]":"Fallup/fallup.html", "[IMG]":"Fallup/Fallup.gif", "[TITLE]":"Fallup"},
     {"[LINK]":"Invaders/invaders.html", "[IMG]":"Invaders/Invaders.gif", "[TITLE]":"Invaders!"},
@@ -30,7 +31,6 @@ projectList = [
     {"[LINK]":"SoundVisualizer/Visualizer.html", "[IMG]":"SoundVisualizer/WaveForm.JPG", "[TITLE]":"Sound Visualizer"},
     {"[LINK]":"Bounce/Bouncer.html", "[IMG]":"Bounce/BounceBox.png", "[TITLE]":"A Bouncing Box"},
     {"[LINK]":"SoundBox/SoundBox.html", "[IMG]":"SoundBox/SoundBox.png", "[TITLE]":"Two Musical Boxes"}
-    {"[LINK]":"GoogleEyes/GoogleEyes.html", "[IMG]":"GoogleEyes/GoogleEyes.png", "[TITLE]":"Two Musical Boxes"}
 ];
 
 var allItemsHTML = "";
