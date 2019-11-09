@@ -143,8 +143,7 @@ playBtn.addEventListener("click",()=>{
     
     if(recordedAudio.length<=0) return;
     recBtn.classList.remove("recording");
-    recording = false;
-    liveAudio = false;
+
     scriptNode.disconnect();
     mic.disconnect();
     audioAnalyser.disconnect();
@@ -168,6 +167,8 @@ playBtn.addEventListener("click",()=>{
     buffersource.connect(audioAnalyser);
     audioAnalyser.connect(audioCtx.destination);
     buffersource.start();
+    recording = false;
+    liveAudio = false;
     playBtn.classList.add("playing");
 })
 
