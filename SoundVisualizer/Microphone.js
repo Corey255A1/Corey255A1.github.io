@@ -1,4 +1,4 @@
-function AudioViz(){
+﻿function AudioViz(){
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const canvas = document.getElementById("viz");
 const drawCtx = canvas.getContext("2d");
@@ -12,7 +12,6 @@ var HEIGHT = canvas.height;
 var PLOTWIDTH = plotcanvas.width;
 var PLOTHEIGHT = plotcanvas.height
 
-const audioBuff = audioCtx.createBuffer(1, 5000, 10000);
 const audioAnalyser = audioCtx.createAnalyser();
 audioAnalyser.fftSize = 256;
 audioAnalyser.minDecibels = -90;
@@ -25,11 +24,10 @@ const barWidth = WIDTH/buffSize;
 var mic;
 
 var timeOffset = 0;
-
+const SoundStates = {LIVE:0, RECORDING:1, PLAYBACK:2};
 
 var recordedAudio = [];
-var recording = false;
-var liveAudio = false;
+var soundState = SoundStates.LIVE;
 var scriptNode;
 var buffersource;
 
@@ -39,10 +37,8 @@ navigator.mediaDevices.getUserMedia({ audio: true })
         buffersource = audioCtx.createBufferSource();
         scriptNode = audioCtx.createScriptProcessor(256, 1, 1);
         scriptNode.onaudioprocess = function(audioData){
-    
-            liveAudio = true;
             var inputData = audioData.inputBuffer.getChannelData(0);
-            if(recording)
+            if(soundState === SoundStates.RECORDING)
             {
                 recordedAudio.push(new Float32Array(inputData));
             }
@@ -76,13 +72,11 @@ function draw(buff)
     drawCtx.clearRect(0, 0, WIDTH, HEIGHT);
     drawCtx.fillStyle = 'rgb(0,0,0)';
     drawCtx.fillRect(0, 0, WIDTH, HEIGHT);
-    if(liveAudio && !recording){
-        drawCtx.fillStyle = 'rgb(0,0,255)';
-    }else if(recording){
-        drawCtx.fillStyle = 'rgb(255,0,0)';
-    }
-    else{
-        drawCtx.fillStyle = 'rgb(0,255,0)';
+    switch(soundState){
+        case SoundStates.LIVE: drawCtx.fillStyle = 'rgb(0,0,255)'; break;
+        case SoundStates.RECORDING: drawCtx.fillStyle = 'rgb(255,0,0)'; break;
+        case SoundStates.PLAYBACK: drawCtx.fillStyle = 'rgb(0,255,0)'; break;
+        default: drawCtx.fillStyle = 'rgb(0,0,255)'; break; break;
     }
     
     if(timeOffset===0){
@@ -96,13 +90,11 @@ function draw(buff)
     {
         var s = buff[d];
         drawCtx.fillRect(offset, HEIGHT-s/2, barWidth, s);
-        if(liveAudio && !recording){
-            plotdrawCtx.fillStyle = 'rgb(0,0,'+s+')';
-        }else if(recording){
-            plotdrawCtx.fillStyle = 'rgb('+s+',0,0)';
-        }
-        else{
-            plotdrawCtx.fillStyle = 'rgb(0,'+s+',0)';
+        switch(soundState){
+            case SoundStates.LIVE: plotdrawCtx.fillStyle = 'rgb(0,0,'+s+')'; break;
+            case SoundStates.RECORDING: plotdrawCtx.fillStyle = 'rgb('+s+',0,0)'; break;
+            case SoundStates.PLAYBACK: plotdrawCtx.fillStyle = 'rgb(0,'+s+',0)'; break;
+            default: plotdrawCtx.fillStyle = 'rgb(0,0,'+s+')'; break; break;
         }
         plotdrawCtx.fillRect(offset, timeOffset, barWidth, barWidth);
         
@@ -113,7 +105,7 @@ function draw(buff)
 
 function setupLiveAudio()
 {
-    liveAudio = true;
+    soundState = SoundStates.LIVE;
     buffersource.disconnect();
     audioAnalyser.disconnect();
     mic.connect(scriptNode);
@@ -123,16 +115,16 @@ function setupLiveAudio()
 var recBtn = document.getElementById("record");
 recBtn.classList.remove("disabled");
 recBtn.addEventListener("click",()=>{
-    if(!recording){
+    if(soundState !== SoundStates.RECORDING){
         recordedAudio = [];
-        recording = true;
-        if(!liveAudio){
+        if(soundState === SoundStates.PLAYBACK){
             setupLiveAudio();
         }
+        soundState = SoundStates.RECORDING;
         playBtn.classList.remove("playing");
         recBtn.classList.add("recording");
     }else{
-        recording = false;
+        soundState = SoundStates.LIVE;
         recBtn.classList.remove("recording");
     }
 })
@@ -141,6 +133,7 @@ var playBtn = document.getElementById("play");
 playBtn.classList.remove("disabled");
 playBtn.addEventListener("click",()=>{
     
+    if(soundState === SoundStates.PLAYBACK) return;    
     if(recordedAudio.length<=0) return;
     recBtn.classList.remove("recording");
 
@@ -167,8 +160,7 @@ playBtn.addEventListener("click",()=>{
     buffersource.connect(audioAnalyser);
     audioAnalyser.connect(audioCtx.destination);
     buffersource.start();
-    recording = false;
-    liveAudio = false;
+    soundState = SoundStates.PLAYBACK;
     playBtn.classList.add("playing");
 })
 
