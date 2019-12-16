@@ -8,28 +8,16 @@
     <link href="../mystyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                        <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
-                        <h4>Create a network and click Solve to find shortest path</h4>
-                </div>
+        <div class="container text-center">
+            <div class="jumbotron text-center">
+                <h1 class="logo"><span class="Wunder">Wunder</span><span class="Vision">Vision</span></h1>
+                <h4><a href="https://www.wundervisionenvisionthefuture.com/">WunderVisionEnvisionTheFuture.com</a></h4>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 id="message"></h4>
-                    <canvas width="512" height="512" id="viz"></canvas>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <button id="solveBtn">Solve</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="../index.html">Back</a>
-                </div>
+            <h4 id="message"></h4>
+            <div><canvas width="512" height="512" id="viz"></canvas></div>
+            <div>
+                <button id="solveBtn">Solve</button>
+                <a href="../index.html">Back</a>
             </div>
         </div>
     <script src="GraphDraw.js"></script>

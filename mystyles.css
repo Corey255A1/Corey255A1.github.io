@@ -1,6 +1,6 @@
 body {
     color: white;
-    background-color: rgb(35,35,35);
+    background-color: rgb(46, 46, 46);
 }
 
 .jumbotron{
@@ -35,20 +35,10 @@ body {
     color: blue;
 }
 
-.square {
-    box-sizing: border-box;
-    border: 1px dashed white;
-    height: 300px;
-    padding: 5px;
-    overflow:hidden;
-    background-color: #111111;
-}
 
 
-.thumb{
-    max-width: 300px;
-    max-height: 200px;
-} 
+
+
 
 .descriptionblock {
     background:white;
@@ -72,4 +62,40 @@ body {
     border-style: solid;
     border-width: 1px;
     border-color: blue;
+}
+
+.thumb{
+    max-width: 300px;
+    max-height: 200px;
+} 
+.square {
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: white 2px 2px 2px;
+    border: 1px solid rgb(175, 175, 175);
+    height: 300px;
+    width: 100%;
+    padding: 10px;
+    overflow:hidden;
+    background-color: #111111;
+    display: block;
+}
+.cardlink:hover .cardlink-text{
+    font-size: 1rem;
+    background: yellow;
+    color: rgb(121, 121, 121);
+    
+}
+.cardlink:hover{
+    text-decoration: none;
+}
+h5.cardlink-text {
+    font-size: 1rem;
+    background: rgb(121, 121, 121);
+    color: white;
+    text-align:center;
+    padding: 5px;
+    width: 85%;
+    margin: 5px auto;
+    text-decoration: none;
 }

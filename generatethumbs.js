@@ -1,10 +1,10 @@
 const thumbsRow = document.getElementById("thumbs");
 
 const template = `
-<div class="col-md-4 square d-flex justify-content-center align-items-center">
-<a href="[LINK]">
+<div class="col-md-4 p-1">
+<a class="cardlink square" href="[LINK]">
     <img class="thumb" src="[IMG]">
-    <h5 style="text-align:center;">[TITLE]</h5>
+    <h5 class="cardlink-text">[TITLE]</h5>
 </a>
 </div>`;
 
