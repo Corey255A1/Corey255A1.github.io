@@ -124,7 +124,7 @@ let size = HEIGHT/2;
 if(WIDTH/2<size){
     size = WIDTH/2;
 }
-const globe = new Globe(ctx, WIDTH/2, HEIGHT/1.5, size, "Merry Christmas!");
+const globe = new Globe(ctx, WIDTH/2, HEIGHT/2, size, "Merry Christmas!");
 
 for(let f=0;f<150;f++){
     let angle = Math.random() * -Math.PI;
