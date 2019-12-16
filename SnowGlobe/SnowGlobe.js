@@ -163,6 +163,7 @@ cnv.addEventListener('touchstart',()=>{
 var lastX = window.screenX;
 var lastY = window.screenY;
 function animate(){
+    ctx.clearRect(0,0,WIDTH,HEIGHT);
     globe.setVelocity(window.screenX - lastX, window.screenY - lastY);
     globe.animate();
     lastX = window.screenX;
