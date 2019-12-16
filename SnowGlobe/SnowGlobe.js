@@ -145,7 +145,7 @@ window.addEventListener('resize', ()=>{
     if(WIDTH/2<size){
         size = WIDTH/2;
     }
-    globe.resize(WIDTH/2,HEIGHT/1.5,size);
+    globe.resize(WIDTH/2,HEIGHT/2,size);
     ctx.clearRect(0,0,WIDTH,HEIGHT);
     globe.animate();
 });
@@ -154,10 +154,12 @@ window.addEventListener('devicemotion',(e)=>{
     globe.setVelocity(e.acceleration.x, e.acceleration.y);
 });
 
-document.getElementById('shake').addEventListener('click',()=>{
+cnv.addEventListener('mousedown',()=>{
     globe.shake();
 });
-
+cnv.addEventListener('touchstart',()=>{
+    globe.shake();
+});
 var lastX = window.screenX;
 var lastY = window.screenY;
 function animate(){
