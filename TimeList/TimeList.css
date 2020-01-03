@@ -8,7 +8,9 @@ body{
     background-color: rgb(189, 189, 189);
     border: 1px solid black;
     box-sizing: border-box;
-    width: 500px;
+    max-width: 500px;
+    min-width: 385px;
+    width: 65%;
     margin: 0 auto;
     padding: 10px;
 }
