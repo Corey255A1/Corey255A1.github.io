@@ -76,7 +76,7 @@ class TimeLogger{
         let h = Math.floor(time / 3600);
         time = time - h*3600;
         let m = Math.floor(time  / 60);
-        let s = Math.round(time - m*60);
+        let s = Math.floor(time - m*60);
 
 
         return (h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
