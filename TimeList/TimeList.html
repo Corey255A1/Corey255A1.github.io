@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+    <title>WunderVision Time List</title>
+    <link rel="stylesheet" href="TimeList.css">
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <h1>WunderVision Time List</h1>
+        </div>
+        <div class="controls">
+            <div class="section">
+                <span class="clock" id="currentTime"></span><strong> - Current Time</strong> 
+            </div>
+            <div  class="section">                
+                <span  class="clock">
+                    <select class="timeSelector hourSelector" id="hour" name="hour"></select>
+                    <select class="timeSelector minuteSelector" id="minute" name="minute"></select>
+                </span>
+                <strong> - Time To Work</strong>
+            </div>
+            <div >
+                <div class="section"><span class="clock green" id="endTime">0</span><strong> - End Time</strong></div>
+                <button class="btn start" id="startstop">Start</button>
+                <div class="section"><span class="clock blue" id="elapsedTime"></span><strong> - Elapsed</strong></div>
+            </div>
+            <div class="list">
+                <h2>Time List</h2>
+                <ul id="timelist">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="TimeList.js"></script>
+</body>
+</html>
