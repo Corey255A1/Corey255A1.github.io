@@ -10,6 +10,7 @@ const template = `
 
 projectList = [
     {"[LINK]":"TimeList/TimeList.html", "[IMG]":"TimeList/TimeList.jpg", "[TITLE]":"Time Tracker"},
+    {"[LINK]":"SnowGlobe/SnowGlobe.html", "[IMG]":"SnowGlobe/SnowGlobe.gif", "[TITLE]":"Snow Globe"},
     {"[LINK]":"GoogleEyes/GoogleEyes.html", "[IMG]":"GoogleEyes/GoogleEyes.png", "[TITLE]":"Googly Eyes"},
     {"[LINK]":"LetterEtch/LetterEtch.html", "[IMG]":"LetterEtch/LetterEtch.gif", "[TITLE]": "Letter Etching"},
     {"[LINK]":"Fallup/fallup.html", "[IMG]":"Fallup/Fallup.gif", "[TITLE]":"Fallup"},
