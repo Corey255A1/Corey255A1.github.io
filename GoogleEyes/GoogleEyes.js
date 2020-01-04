@@ -12,8 +12,8 @@ document.querySelectorAll(".eye").forEach((eye)=>{
     eyes.push({
         eye:eye,
         position:pos,
-        centerX:pos.x+pos.width/2,
-        centerY:pos.y+pos.height/2
+        centerX:pos.left+pos.width/2,
+        centerY:pos.top+pos.height/2
     });
 })
 
