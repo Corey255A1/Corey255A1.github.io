@@ -18,13 +18,19 @@ body {
     h4 {
         font-size: 1em;
     }
+    h3 {
+        font-size: 2rem;
+    }
 }
 @media only screen and (max-width: 576px)  {
     .logo {
-        font-size: 2em;
+        font-size: 2.2em;
     }
     h4 {
-        font-size: 0.7em;
+        font-size: 0.9em;
+    }
+    h3 {
+        font-size: 1.2rem;
     }
 }
 
@@ -71,7 +77,7 @@ body {
 .square {
     text-align: center;
     box-sizing: border-box;
-    box-shadow: white 2px 2px 2px;
+    box-shadow: 1px 1px 3px white ;
     border: 1px solid rgb(175, 175, 175);
     height: 300px;
     width: 100%;
