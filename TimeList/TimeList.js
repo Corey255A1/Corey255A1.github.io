@@ -79,7 +79,7 @@ class TimeLogger{
         let s = Math.floor(time - m*60);
 
 
-        return (h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+        return (h<10?"0"+h:h)+"h "+(m<10?"0"+m:m)+"m "+(s<10?"0"+s:s)+"s";
 
     }
 }
