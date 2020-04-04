@@ -3,13 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>WunderVision Name Selector</title>
+    <style>
+        body,html{
+            font-family: Arial, Helvetica, sans-serif;
+            margin:0px;
+            background-color: rgb(39, 45, 99);
+            color:white;
+        }
+        .main{
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            
+            padding: 4px;
+            margin:0px
+        }
+        h2{
+            margin: 0;
+            height: 25px;
+        }
+        .col{        
+            margin:2px;
+        }
+        textarea{
+            resize: none;
+            outline: none;
+        }
+        button{
+            margin: 2px;
+            height: 25px;
+            border-radius: 10%;
+            border: 1px solid black;
+            outline: none;
+            background-color: green;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: yellow;
+            border: 1px solid white;
+            color:green;
+        }
+        button:active{
+            background-color: blue;
+            border: 1px solid yellow;
+            color:white;
+        }
+        /* canvas{
+            height: 100%;
+            width: 100%;
+            min-width: 320px;
+            min-height: 320px;
+        } */
+    </style>
 </head>
 <body>
-    <p><button type="button" id="setBtn">Set Names</button></p>
-    <p><textarea id="names" cols="50" rows="100">Enter Names</textarea></p>
-    <p><div><h2 id="winner">Wheel of randomness!</h2></div>
-    <button type="button" id="spinBtn">Spin!</button></p>
-    <p><canvas width="640" height="640" id="SpinWheel"></canvas></p>
+    <div class="main">
+        <div class="col">
+            <div><h2>Wheel Of Randomness!</h2></div>
+            <div><h2 id="winner"></h2></div>
+            <div><button type="button" id="spinBtn">SPIN</button></div>
+            <canvas width="640" height="640" id="spinwheel"></canvas>
+        </div>
+        <div class="col">
+            <textarea id="names" cols="35" rows="2" placeholder="Enter Names"></textarea>
+        </div>
+
+    </div>
     <script src="RandName.js"></script>
 </body>
 </html>
