@@ -1,0 +1,72 @@
+body,html{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0px;
+    background-color: rgb(39, 45, 99);
+    color:white;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 75%;
+    padding: 4px;
+    margin:0 auto;
+}
+h2{
+    margin: 0;
+    height: 25px;
+}
+h1{
+    margin: 0;
+}
+.col{        
+    margin:2px;
+}
+textarea{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    width:350px;
+    resize: none;
+    outline: none;
+}
+input{
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    outline: none;
+    width:350px;
+}
+button{
+    margin: 2px;
+    height: 50px;
+    width: 75px;
+    font-size: 1.2rem;
+    border-radius: 10%;
+    border: 1px solid black;
+    outline: none;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    background-color: green;
+    font-weight: bold;
+}
+button:hover{
+    background-color: yellow;
+    border: 1px solid white;
+    color:green;
+    text-shadow: 1px 1px 2px white;
+}
+button:active{
+    background-color: blue;
+    border: 1px solid yellow;
+    color:white; 
+}
+canvas{
+    margin-top:5px;
+}
+.hide{
+    display: none;
+}
+#controls{
+    text-align:left;
+}
