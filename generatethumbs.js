@@ -9,6 +9,7 @@ const template = `
 </div>`;
 
 projectList = [
+	{"[LINK]":"CheckoutCheckin/checkoutcheckin.html", "[IMG]":"CheckoutCheckin/checkoutcheckin.gif", "[TITLE]":"Check Out"},
     {"[LINK]":"TimeList/TimeList.html", "[IMG]":"TimeList/TimeList.jpg", "[TITLE]":"Time Tracker"},
     {"[LINK]":"SnowGlobe/SnowGlobe.html", "[IMG]":"SnowGlobe/SnowGlobe.gif", "[TITLE]":"Snow Globe"},
     {"[LINK]":"GoogleEyes/GoogleEyes.html", "[IMG]":"GoogleEyes/GoogleEyes.png", "[TITLE]":"Googly Eyes"},

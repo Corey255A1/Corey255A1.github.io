@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WunderVision: Check Out Check In</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="menu" id="menu" style="display: none; flex-direction: row; justify-content: space-between; width: 75%; margin: 0 auto;">
+        <div style="display: flex; flex-direction: row;">
+            <button class="btncool" id="load">Load Settings</button>
+            <input class="hide" type="file" id="file_input" accept="*">
+            
+            <button class="btncool" id="save">Export Settings</button>
+            <a class="hide" id="download_anchor" href="#"></a>
+        </div>
+        <button class="btnclose">X</button>
+    </div>
+    <div class="aligncenter">
+        <span class="time" id="current_time">7:24</span>
+    </div>
+    <div style="display: flex; flex-direction: row; width: 100%; justify-content: center;">
+        <button class="biground green" id="checkout">CHECK-OUT</button>
+        <button class="biground red invisible" id="checkin">CHECK-IN</button>
+    </div>
+    <div class="aligncenter">
+        <div class="time" id="checkout_time"></div>
+        <div class="time" id="checkout_elapsed"></div>
+    </div>
+    <div class="aligncenter">
+        <div style="width: 100%;">
+            <div class="table header">
+                <div class="cell tName">Name</div>
+                <div class="cell tDate">Date</div>
+                <div class="cell tCheckInOut">Check-Out</div>
+                <div class="cell tCheckInOut">Check-In</div>
+                <div class="cell tElapsed">Elapsed</div>
+                <div class="cell tCount">Count</div>
+            </div>
+            <div id="checkout_table">
+            <div class="table">
+                <div class="cell tName">Wilhelm Herman VanJarsfeld</div>
+                <div class="cell tDate">6/20/2020</div>
+                <div class="cell tCheckInOut">7:15pm</div>
+                <div class="cell tCheckInOut">7:35pm</div>
+                <div class="cell tElapsed">00:20:00</div>
+                <div class="cell tCount">4</div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

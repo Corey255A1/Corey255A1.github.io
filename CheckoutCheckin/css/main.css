@@ -1,0 +1,142 @@
+body, html{
+    padding: 0;
+    margin: 0;
+}
+.hide{
+    height:0px;
+    width:0px;
+    overflow:hidden;
+    border:none;
+    opacity:0;
+}
+
+.menu{
+    background-color: #dbdbdb;
+    margin: 0;
+    padding: 5px;
+}
+
+.red{
+    background-color: red;
+}
+
+.green{
+    background-color: rgb(0, 92, 5);
+}
+
+.green:active{
+    background-color: rgb(13, 63, 15);
+}
+
+.red:active{
+    background-color: rgb(63, 13, 13);
+}
+.biground:active{
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.biground.invisible{
+    opacity: 0.0;
+    transition: linear 0.5s opacity;
+}
+
+.biground {
+    display: block;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    padding: 0;
+    margin: 5px;
+    width: 250px;
+    height: 250px;
+    outline: none;
+    font-size: 1.4rem;
+    border: 1px solid white;
+    border-radius: 100%;
+    color: white;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0);
+    opacity: 1.0;
+    transition: linear 0.5s opacity;
+}
+
+.btncool {
+    display: block;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    padding: 0;
+    width: 150px;
+    height: 35px;
+    outline: none;
+    font-size: 1rem;
+    background-color: #858585;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px white;
+}
+
+.btncool:active {
+    background-color: #dbdbdb;
+    color: navy;
+    cursor:pointer;
+}
+
+.btncool:hover {
+    background-color: #a7a7a7;
+    color: #005586;
+}
+
+.btnclose {
+    height: 35px;
+    width: 35px;
+    background-color: rgb(124, 1, 1);
+    color: white;
+    font-weight: bold;
+}
+
+.time{
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: red;
+}
+
+.aligncenter{
+    text-align: center; 
+    width: 100%; 
+    margin: 25px auto;
+}
+
+
+.table{
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    justify-content: center;
+}
+.table.header{
+    font-weight: bold;
+}
+
+.cell{
+    border: 1px solid black;
+}
+
+.tName{
+    width: 170px;
+}
+.tDate{
+    width: 100px;
+}
+.tCheckInOut{
+    width: 95px;
+}
+.tElapsed{
+    width: 75px;
+}
+.tCount{
+    width: 50px;
+}
