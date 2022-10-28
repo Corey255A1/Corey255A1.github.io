@@ -1,10 +1,27 @@
-const drawctx = document.getElementById("draw").getContext("2d");
-const Width = 480;
-const Height = 480;
+const cnv = document.getElementById("draw");
+const drawctx = cnv.getContext("2d");
+cnv.width = window.innerWidth;
+cnv.height = window.innerHeight;
+let CNV_Width = cnv.width;
+let CNV_Height = cnv.height;
+let CNV_Half_Width = cnv.width/2;
+let CNV_Half_Height = cnv.height/2;
+drawctx.width = cnv.width;
+drawctx.height = cnv.height;
+
+window.addEventListener('resize',()=>{
+    cnv.width = window.innerWidth;
+    cnv.height = window.innerHeight;
+    CNV_Width = cnv.width;
+    CNV_Height = cnv.height;
+    CNV_Half_Width = cnv.width/2;
+    CNV_Half_Height = cnv.height/2;
+    drawctx.width = cnv.width;
+    drawctx.height = cnv.height;
+})
 
 
-
-function Object_3D(x,y,z,size){
+function Object3D(x,y,z,size){
     const self = this;
     self.X = x;
     self.Y = y;
@@ -58,9 +75,9 @@ function Object_3D(x,y,z,size){
         self.X += self.Vx;
         self.Y += self.Vy;
         self.Z += 0.25*self.Vz;
-        if(self.X<0 || self.X>480 ||
-        self.Y<0 || self.Y>480 ||
-        self.Z<0 || self.Z>50){self.Y = 240;self.X = 240; self.Z = 2;}
+        if(self.X<0 || self.X>CNV_Width ||
+        self.Y<0 || self.Y>CNV_Height ||
+        self.Z<0 || self.Z>50){self.Y = CNV_Half_Height;self.X = CNV_Half_Width; self.Z = 2;}
     }
     self.draw = function(ctx){
         ctx.fillStyle = "rgb("+((self.Z/50) * 205 + 50)+",0,0)";
@@ -71,7 +88,7 @@ function Object_3D(x,y,z,size){
     }
 }
 
-var obj = new Object_3D(50,50,5,10);
+var obj = new Object3D(50,50,5,10);
 function keyDown(k){
     obj.Input(k.keyCode, true);
 }
@@ -84,18 +101,15 @@ window.addEventListener("keyup", keyUp);
 objVec = [];
 for(var i=0;i<200;++i)
 {
-    var o = new Object_3D(240,240,2,2);
+    var o = new Object3D(CNV_Half_Width, CNV_Half_Height,2,2);
     o.applyForce(Math.random()*4-2,Math.random()*4-2, Math.random()*0.25);
     objVec.push(o);
 }
 
 var inc = false;
 function update(){
-    drawctx.clearRect(0,0,Width,Height);
     drawctx.fillStyle = "black";
-    drawctx.fillRect(0,0,Width,Height);
-    //obj.update();
-    //obj.draw(drawctx);
+    drawctx.fillRect(0,0,drawctx.width,drawctx.height);
     
     objVec.sort(function(a,b){return a.Z - b.Z});
     for(o in objVec){
