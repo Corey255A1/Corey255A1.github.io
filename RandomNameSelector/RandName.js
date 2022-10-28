@@ -2,9 +2,19 @@ const namesList = document.getElementById("names");
 const winnerLbl = document.getElementById("winner");
 const title = document.getElementById("title");
 const cnv = document.getElementById("spinwheel");
+
 const ctx = cnv.getContext("2d");
-const Width = cnv.width;
-const Height = cnv.height;
+let CNV_Rect = cnv.getBoundingClientRect();
+let CNV_Width = CNV_Rect.width;
+let CNV_Height = CNV_Rect.height;
+if(CNV_Width>CNV_Height){
+    CNV_Width = CNV_Height;
+}else{
+    CNV_Height = CNV_Width;
+}
+cnv.width = CNV_Width;
+cnv.height = CNV_Height;
+console.log(CNV_Rect);
 const TWOPI = Math.PI*2;
 
 document.getElementById("hideBtn").addEventListener('click',function(){
@@ -25,8 +35,8 @@ document.getElementById("titleEdit").addEventListener("input",function(){
     title.innerText = this.value;
 });
 
-const radius = (Width/2)*.95;
-ctx.translate(Width/2, Height/2);
+const radius = (CNV_Width/2)*.95;
+ctx.translate(CNV_Width/2, CNV_Height/2);
 const colorList = ['teal','red','blue','orange','green','yellow', 'purple'];
 let selectionOver = true;
 let target = -1;
@@ -126,7 +136,7 @@ function animate(){
     }
     //ctx.fillStyle = 'black';
     //ctx.fillRect(-Width/2,-Height/2,Width,Height);
-    ctx.clearRect(-Width/2,-Height/2,Width,Height);
+    ctx.clearRect(-CNV_Width/2,-CNV_Height/2,CNV_Width,CNV_Height);
     ctx.shadowBlur = 20;
     ctx.shadowColor = "black";
     ctx.strokeStyle = "white";

@@ -3,23 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>WunderVision Dijkstra's Algorithm</title>
-    <link href="../bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../mystyles.css" rel="stylesheet" type="text/css">
+    <title>WunderVision: Dijkstra's Algorithm</title>
+    <link href="/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/mystyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-        <div class="container text-center">
-            <div class="jumbotron text-center">
-                <h1 class="logo"><span class="Wunder">Wunder</span><span class="Vision">Vision</span></h1>
-                <h4><a href="https://www.wundervisionenvisionthefuture.com/">WunderVisionEnvisionTheFuture.com</a></h4>
-            </div>
-            <h4 id="message"></h4>
-            <div><canvas width="512" height="512" id="viz"></canvas></div>
-            <div>
-                <button id="solveBtn">Solve</button>
-                <a href="../index.html">Back</a>
-            </div>
+    <nav class="navbar bg-black navbar-expand-lg">
+        <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
+            <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
+        </a>
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link nav-light" href="/">Home</a>
+            <a class="nav-item nav-link nav-light" href="https://www.wundervisionenvisionthefuture.com/blog_app">Blog</a>
         </div>
+    </nav>
+    <div class="container text-center">
+        <h4 id="message"></h4>
+        <div><canvas width="512" height="512" id="viz"></canvas></div>
+        <div>
+            <button id="solveBtn">Solve</button>
+            <a href="../index.html">Back</a>
+        </div>
+    </div>
     <script src="GraphDraw.js"></script>
     <script src="Dijkstra.js"></script>
 </body>

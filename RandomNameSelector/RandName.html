@@ -2,17 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WunderVision Name Selector</title>
+    <title>WunderVision: Random Name Wheel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/mystyles.css" rel="stylesheet" type="text/css">
     <link href="RandName.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <nav class="navbar bg-black navbar-expand-lg">
+        <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
+            <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
+        </a>
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link nav-light" href="/">Home</a>
+            <a class="nav-item nav-link nav-light" href="https://www.wundervisionenvisionthefuture.com/blog_app">Blog</a>
+        </div>
+    </nav>
     <div class="main">
         <div class="col">
             <div><h1 id="title"></h1></div>
             <div><h2 id="winner"></h2></div>
             
-            <canvas width="720" height="720" id="spinwheel"></canvas>
+            <canvas id="spinwheel" width="512" height="512"></canvas>
             <!-- <div><button type="button" id="spinBtn">SPIN</button></div> -->
         </div>
         <div id="controls" class="col">
