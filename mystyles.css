@@ -71,12 +71,14 @@ body {
 }
 
 .thumb{
-    max-width: 300px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
 } 
 .square {
     text-align: center;
     box-sizing: border-box;
+    border-radius: 25px;
     box-shadow: 1px 1px 3px white ;
     border: 1px solid rgb(175, 175, 175);
     height: 300px;
@@ -98,6 +100,7 @@ body {
 h5.cardlink-text {
     font-size: 1rem;
     background: rgb(121, 121, 121);
+    border-radius: 10px;
     color: white;
     text-align:center;
     padding: 5px;

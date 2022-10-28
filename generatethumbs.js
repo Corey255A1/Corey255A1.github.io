@@ -31,7 +31,7 @@ projectList = [
     {"[LINK]":"LaserBeam/LaserBeam.html", "[IMG]":"LaserBeam/LaserBeam.png", "[TITLE]":"Laser Beam"},
     {"[LINK]":"GeometryFun/GeometryFun.html", "[IMG]":"GeometryFun/GeometryFun.png", "[TITLE]":"Geometry Fun"},
     {"[LINK]":"Mesh/Mesh.html", "[IMG]":"Mesh/Mesh.png", "[TITLE]":"Blue Explosion"},
-    {"[LINK]":"SoundVisualizer/Visualizer.html", "[IMG]":"SoundVisualizer/WaveForm.JPG", "[TITLE]":"Sound Visualizer"},
+    {"[LINK]":"SoundVisualizer/Visualizer.html", "[IMG]":"SoundVisualizer/WaveForm.png", "[TITLE]":"Sound Visualizer"},
     {"[LINK]":"Bounce/Bouncer.html", "[IMG]":"Bounce/BounceBox.png", "[TITLE]":"A Bouncing Box"},
     {"[LINK]":"SoundBox/SoundBox.html", "[IMG]":"SoundBox/SoundBox.png", "[TITLE]":"Two Musical Boxes"}
 ];
