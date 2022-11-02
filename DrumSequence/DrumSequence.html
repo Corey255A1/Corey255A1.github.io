@@ -4,64 +4,73 @@
 <head>
     <meta charset="utf-8" />
     <title>WunderVision Drum Sequencer</title>
-    <link href="../bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../mystyles.css" rel="stylesheet" type="text/css">
+    <link href="/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/mystyles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-        <audio id="kick">
-            <source src="kick.wav">
-        </audio>
-        <audio id="snare">
-            <source src="snare.wav">
-        </audio>
-        <audio id="hihat">
-            <source src="hihat.ogg">
-        </audio>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                        <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
-                        <h4>Drum Sequencer</h4>
-                        <span class="Normal">
-                            Click and Drag a K (Kick), S (Snare), H (HiHat) to the grid
-                        <br>Then click Start to begin the Sequencer.
-                        </span>
+    <nav class="navbar bg-black navbar-expand">
+        <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
+            <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
+        </a>
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link nav-light" href="/">Home</a>
+            <a class="nav-item nav-link nav-light" href="https://www.wundervisionenvisionthefuture.com/blog_app">Blog</a>
+        </div>
+    </nav>
+    <audio id="kick">
+        <source src="kick.wav">
+    </audio>
+    <audio id="snare">
+        <source src="snare.wav">
+    </audio>
+    <audio id="hihat">
+        <source src="hihat.ogg">
+    </audio>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                    <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
+                    <h4>Drum Sequencer</h4>
+                    Exploring drag and drop and playing audio tones
+                    <br>Click and Drag a K (Kick), S (Snare), H (HiHat) to the grid
+                    <br>Then click Start to begin the Sequencer.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div id="kickIcon" class="row icon Normal" ondragstart="drag(event)" draggable="true">
+                    K
+                </div>
+                <div id="snareIcon" class="row icon Normal" ondragstart="drag(event)" draggable="true">
+                    S
+                </div>
+                <div id="hihatIcon" class="row icon Normal" ondragstart="drag(event)" draggable="true">
+                    H
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div id="kickIcon" class="row icon Normal" ondragstart="drag(event)" draggable="true">
-                        K
-                    </div>
-                    <div id="snareIcon" class="row icon Normal" ondragstart="drag(event)" draggable="true">
-                        S
-                    </div>
-                    <div id="hihatIcon" class="row icon Normal" ondragstart="drag(event)" draggable="true">
-                        H
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div id="draggrid" class="row">
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                </div>
-                <div class="col-sm-3">
-                    <button onclick="startSequence()">Start</button>
-                    <button onclick="stopSequence()">Stop</button>
-                    <button onclick="addMeasure()">Add</button>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="../index.html">Back</a>
+            <div class="col-sm-3">
+                <div id="draggrid" class="row">
+                    
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-3">
+                <button onclick="startSequence()">Start</button>
+                <button onclick="stopSequence()">Stop</button>
+                <button onclick="addMeasure()">Add</button>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="../index.html">Back</a>
+            </div>
+        </div>
+    </div>
     <script src="DrumSequence.js"></script>
 </body>
 

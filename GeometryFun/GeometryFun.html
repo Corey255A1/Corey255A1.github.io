@@ -6,27 +6,27 @@
     <title>WunderVision Geometry Fun</title>
     <link href="../bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="../mystyles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                        <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
-                        <h4>Click on green end points to connect lines and create angles</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                <canvas width="512" height="512" id="viz"></canvas>
-                <div id="message"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="../index.html">Back</a>
-                </div>
-            </div>
-        </div>
+    <nav class="navbar bg-black navbar-expand">
+        <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
+            <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
+        </a>
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link nav-light" href="/">Home</a>
+            <a class="nav-item nav-link nav-light" href="https://www.wundervisionenvisionthefuture.com/blog_app">Blog</a>
+          </div>
+    </nav>
+    <div class="container text-center">
+        <h4>Geometry Fun</h4>
+        <p>Click in the square to begin a line. Click a second point to finish
+        <br>Click on the green boxes to connect two lines and create angles
+        <canvas width="512" height="512" id="viz"></canvas>
+        <div id="message"></div>
+        <a href="/">Back</a>
+        
+    </div>
     <script src="GeometryFun.js"></script>
 </body>
 

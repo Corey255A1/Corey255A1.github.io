@@ -8,7 +8,7 @@
     <link href="/mystyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <nav class="navbar bg-black navbar-expand-lg">
+    <nav class="navbar bg-black navbar-expand">
         <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
             <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
         </a>
@@ -18,11 +18,13 @@
         </div>
     </nav>
     <div class="container text-center">
+        <p>Draw some nodes and find the shortest path using Dijkstra's Algorithm
+        <br>Nodes must connect between the Blue (start) and Red (end) nodes
         <h4 id="message"></h4>
         <div><canvas width="512" height="512" id="viz"></canvas></div>
         <div>
             <button id="solveBtn">Solve</button>
-            <a href="../index.html">Back</a>
+            <a href="/">Back</a>
         </div>
     </div>
     <script src="GraphDraw.js"></script>

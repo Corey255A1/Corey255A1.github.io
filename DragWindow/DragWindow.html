@@ -1,19 +1,31 @@
 <html>
     <head>
-        <title>WunderVision DragWindow</title>
+        <title>WunderVision: DragWindow</title>
         <link href="DragWindow.css" rel="stylesheet" type="text/css">
+        <link href="/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="/mystyles.css" rel="stylesheet" type="text/css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body style="background-color:teal;">
+        <nav class="navbar bg-black navbar-expand">
+            <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
+                <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
+            </a>
+            <div class="nav navbar-nav">
+                <a class="nav-item nav-link nav-light" href="/">Home</a>
+                <a class="nav-item nav-link nav-light" href="https://www.wundervisionenvisionthefuture.com/blog_app">Blog</a>
+            </div>
+        </nav>
         <h1>WunderVision: Draggable Windows!!</h1>
         <div id="dragsection">
-            <div class="moveable" id="elm1" style="top: 50px;">
+            <div class="moveable" id="elm1" style="top: 150px;">
                 <div class="titlebar">Cool Window</div>
                 <div>
                 <br>This is some text</br>
                 <br>This window will size to the max line but no less than 400px</br>
                 </div>
             </div>
-            <div class="moveable" id="elm2" style="top: 80px;left: 100px;">
+            <div class="moveable" id="elm2" style="top: 180px;left: 100px;">
                 <div class="titlebar">Image Window</div>
                 <img src="../Dijkstra/Dijkstra.png"/>
             </div>
