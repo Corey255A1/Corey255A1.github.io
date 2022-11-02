@@ -20,6 +20,7 @@ projectList = [
     {"[LINK]":"Gravity/Gravity.html", "[IMG]":"Gravity/Gravity.gif", "[TITLE]":"Gravity Paint"},
     {"[LINK]":"LetterEtch/LetterEtch.html", "[IMG]":"LetterEtch/LetterEtch.gif", "[TITLE]": "Letter Etching"},
     {"[LINK]":"Dijkstra/Dijkstra.html", "[IMG]":"Dijkstra/Dijkstra.png", "[TITLE]":"Dijkstra's Algorithm"},
+    {"[LINK]":"SoundBox/SoundBox.html", "[IMG]":"SoundBox/SoundBox.png", "[TITLE]":"Two Musical Boxes"},
     {"[LINK]":"GeometryFun/GeometryFun.html", "[IMG]":"GeometryFun/GeometryFun.png", "[TITLE]":"Geometry Fun"},
     {"[LINK]":"DistanceTime/DistanceTime.html", "[IMG]":"DistanceTime/DistanceTime.png", "[TITLE]":"DistanceTime"},
     {"[LINK]":"ZipDemo/ZipDemo.html", "[IMG]":"ZipDemo/ZipDemo.png", "[TITLE]":"Zip Demo"},
@@ -35,8 +36,8 @@ projectList = [
     {"[LINK]":"LaserBeam/LaserBeam.html", "[IMG]":"LaserBeam/LaserBeam.png", "[TITLE]":"Laser Beam"},
     {"[LINK]":"Mesh/Mesh.html", "[IMG]":"Mesh/Mesh.png", "[TITLE]":"Blue Explosion"},
     {"[LINK]":"SoundVisualizer/Visualizer.html", "[IMG]":"SoundVisualizer/WaveForm.png", "[TITLE]":"Sound Visualizer"},
-    {"[LINK]":"Bounce/Bouncer.html", "[IMG]":"Bounce/BounceBox.png", "[TITLE]":"A Bouncing Box"},
-    {"[LINK]":"SoundBox/SoundBox.html", "[IMG]":"SoundBox/SoundBox.png", "[TITLE]":"Two Musical Boxes"}
+    {"[LINK]":"Bounce/Bouncer.html", "[IMG]":"Bounce/BounceBox.png", "[TITLE]":"A Bouncing Box"}
+    
 ];
 
 var allItemsHTML = "";

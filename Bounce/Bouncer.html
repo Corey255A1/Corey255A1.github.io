@@ -3,30 +3,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>WunderVision Bounce Box</title>
-    <link href="../bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../mystyles.css" rel="stylesheet" type="text/css">
+    <title>WunderVision: Bounce Box</title>
+    <link href="/bootstrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/mystyles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                        <h1><span class="Wunder Standard">Wunder</span><span class="Vision Standard">Vision</span></h1>
-                        <h4>Draw Lines to block the box. Click start and end points</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                <canvas width="512" height="512" id="viz"></canvas>
-                <div id="message"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="../index.html">Back</a>
-                </div>
-            </div>
+    <nav class="navbar bg-black navbar-expand">
+        <a class="navbar-brand text-light" href="https://www.wundervisionenvisionthefuture.com">
+            <image src="/WunderBot_alpha.png" class="d-inline-block align-top" style="background-color: white; width:32px; height:32px; border-radius: 5px;"></image>
+        </a>
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link nav-light" href="/">Home</a>
+            <a class="nav-item nav-link nav-light" href="https://www.wundervisionenvisionthefuture.com/blog_app">Blog</a>
         </div>
+    </nav>
+    <div class="container text-center">
+        <br>Click to draw Lines to block the box. Click start and end points
+        <p></p>
+        <canvas width="512" height="512" id="viz"></canvas>
+        <div id="message"></div>
+        <a href="/">Back</a>
+    </div>
     <script src="Bouncer.js"></script>
 </body>
 
